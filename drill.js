@@ -70,6 +70,41 @@ function days(month, leapYear = false) {
     return `${month} has ${day} days.`;
 }
 
+function RPS(num) {
+    if (num < 1 || num > 3) {
+        throw new Error('Please enter a value [1,3]');
+    }
+    const randomNo = Math.floor(Math.random() * 3) + 1;
+    console.log(randomNo);
+    let win = 0;
+    if (num === 1) {
+        if (randomNo === 2) {
+            win = -1;
+        } else if (randomNo === 3) {
+            win = 1;
+        }
+    } else  if (num === 2) {
+        if (randomNo === 1) {
+            win = 1;
+        } else if (randomNo === 3) {
+            win = -1;
+        }
+    } else {
+        if (randomNo === 1) {
+            win = -1;
+        } else if (randomNo === 2) {
+            win = 1;
+        }
+    }
+    if (!win) {
+        return 'tie';
+    } else if (win === 1) {
+        return 'win';
+    } else {
+        return 'lose';
+    }
+}
+
 console.log(jediName('Sean', 'Krummel'));
 beyond(undefined);
 beyond(1);
@@ -85,6 +120,11 @@ console.log(decode('croon'));
 console.log(decode('droop'));
 try {
     console.log(days('february', true));
+} catch (e) {
+    console.log(e);
+}
+try {
+    console.log(RPS(1));
 } catch (e) {
     console.log(e);
 }
